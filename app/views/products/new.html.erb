@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="card mt-3" style="width: 50rem;">
+    <div class="card-body">
+      <h1 class="text-center">Product</h1>
+      <div class="form-group">
+        <%=form_with model: @product do |f|%>
+          <div class="row">
+            <div class="col-6">
+              <%=f.label :code%>
+              <%=f.text_field :code, class: 'form-control'%>
+            </div>
+            <div class="col-6">
+              <%=f.label :name%>
+              <%=f.text_field :name, class: 'form-control'%>
+            </div>
+            <div class="col-6">
+              <%=f.label :description%>
+              <%=f.text_area :description, class: 'form-control'%>
+            </div>
+            <div class="col-6">
+              <%=f.label :price%>
+              <%=f.text_field :price, class: 'form-control'%>
+            </div>
+              <div class="col-4 form-group mt-3">
+                <%=f.submit 'Save', :class =>"btn btn-outline-primary"%>
+              </div>
+          </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>

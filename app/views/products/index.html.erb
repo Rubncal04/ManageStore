@@ -1,8 +1,37 @@
-<h1>All products</h1>
-<%@products.each do |product|%>
-  <div>
-    <h2><%=product.name%></h2>
-    <%=product.code%><br>
-    <%=link_to "Show more", product%>
+<div class="container">
+  <div class="card mt-4">
+    <div class="card-body">
+      <h1>All products</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Code</th>
+            <th scope="col">Name</th>
+            <th scope="col">Main storage</th>
+            <th scope="col">Description</th>
+            <th scope="col">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+        <%@products.each do |product|%>
+          <tr>
+            <td><%= product.code %></td>
+            <td><%= product.name %></td>
+            <td><%= product.main_storage %></td>
+            <td><%= product.description %></td>
+            <td>
+              <%= link_to 'Edit', edit_product_path(product), class: "btn btn-outline-primary" %>
+              <%= link_to 'Remove', product, method: :delete, data: {confirm: 'Are you Sure?'}, class: "btn btn-outline-primary mt-2" %>
+            <td>
+          </tr>
+        <%end%>
+        </tbody>
+      </table><br>
+    </div>
+    <div class="card-footer mb-4">
+      <div class="mt-2 d-md-flex justify-content-md-end">
+        <%= link_to "New product", {controller: "products", action: "new"}, class: "btn btn-outline-primary" %> 
+      <div>
+    <div>
   </div>
-<%end%>
+<div>

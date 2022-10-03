@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="card mt-5">
+    <div class="card-body">
+      <% flash.each do |type, message| %>
+        <div class="alert alert-info">
+          <%= message %>
+        </div>
+      <% end %>
+      <div class="row">
+        <div class="col-12">
+          <div class="form-group">
+            <%= form_with model: @product do |f| %>
+              <div class="mb-3">
+                <h1><%= @product.name %></h1>
+              </div>
+              <div class="row">
+                <div class="col-6 mt-2">
+                  <%= f.label :code %>
+                  <%= f.text_field :code, class: 'form-control' %>
+                </div>
+                <div class="col-6 mt-2">
+                  <%= f.label :name %>
+                  <%= f.text_field :name, class: 'form-control' %>
+                </div>
+                <div class="col-6 mt-2">
+                  <%= f.label :description %>
+                  <%= f.text_area :description, class: 'form-control' %>
+                </div>
+                <div class="col-6 mt-2">
+                  <%= f.label :price %>
+                  <%= f.text_field :price, class: 'form-control' %>
+                </div>
+                  <div class="col-4 form-group mt-3">
+                    <%= f.submit 'Save', :class =>"btn btn-outline-primary" %>
+                  </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

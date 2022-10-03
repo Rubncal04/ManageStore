@@ -18,8 +18,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_22_032023) do
     t.string "code", null: false
     t.string "name"
     t.text "description"
-    t.integer "main_storage"
-    t.integer "current_storage"
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

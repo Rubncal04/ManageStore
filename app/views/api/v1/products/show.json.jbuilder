@@ -1,4 +1,1 @@
-json.message 'Your product'
-json.data do
-  json.(@product, :id, :code, :name, :description, :price)
-end
+json.partial! @product,  partial: 'product', as: :product

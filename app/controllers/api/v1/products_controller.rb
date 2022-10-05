@@ -16,8 +16,8 @@ class Api::V1::ProductsController < Api::ApiController
   def update
     render json: @product, status: :created if @product.update! product_params
 
-    rescue StandardError => e
-      render json: { message: 'Something went wrong', error: e.message }, status: :unprocessable_entity
+  rescue StandardError => e
+    render json: { message: 'Something went wrong', error: e.message }, status: :unprocessable_entity
   end
 
   def destroy

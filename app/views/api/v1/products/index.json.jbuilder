@@ -1,3 +1,1 @@
-json.data @products do |product|
-  json.(product, :id, :code, :name, :description, :price)
-end
+json.array! @products,  partial: 'product', as: :product

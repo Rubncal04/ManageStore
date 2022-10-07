@@ -1,7 +1,6 @@
 databases:
   - name: postgres
-    databaseName: manage_store
-    user: ManageStore
+    ipAllowList: []
 
 services:
   - type: web

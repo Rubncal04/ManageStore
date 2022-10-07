@@ -1,7 +1,7 @@
 databases:
   - name: postgres
     databaseName: manage_store
-    user: manage_store
+    user: ManageStore
 
 services:
   - type: web

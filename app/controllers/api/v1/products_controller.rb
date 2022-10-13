@@ -14,7 +14,7 @@ class Api::V1::ProductsController < Api::ApiController
   end
 
   def update
-    render json: @product, status: :created if @product.update! product_params
+    render json: @product, status: :ok if @product.update! product_params
 
   rescue StandardError => e
     render json: { message: 'Something went wrong', error: e.message }, status: :unprocessable_entity
@@ -32,6 +32,6 @@ class Api::V1::ProductsController < Api::ApiController
   end
 
   def product_params
-    params.require(:product).permit :code, :name, :description, :price
+    params.require(:product).permit :code, :name, :description, :price, :stock_quantity
   end
 end

@@ -3,7 +3,7 @@
 # Table name: orders
 #
 #  id               :bigint           not null, primary key
-#  order_type       :string
+#  order_type       :string           not null
 #  product_quantity :integer
 #  quantity         :integer          not null
 #  created_at       :datetime         not null
@@ -23,7 +23,7 @@ class Order < ApplicationRecord
 
   enum :order_type, { purchase: 'purchase', sale: 'sale' }
 
-  validates :quantity, presence: true
+  validates :quantity, :order_type, presence: true
 
   before_save :set_product_quantity
   after_save :set_quantity

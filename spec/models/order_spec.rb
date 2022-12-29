@@ -3,7 +3,7 @@
 # Table name: orders
 #
 #  id               :bigint           not null, primary key
-#  order_type       :string
+#  order_type       :string           not null
 #  product_quantity :integer
 #  quantity         :integer          not null
 #  created_at       :datetime         not null
@@ -21,5 +21,30 @@
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "is valid with a product id" do
+    product = Product.new(code: "34rty")
+    expect(product.orders.new(quantity: 10, order_type: "purchase")).to be_valid
+  end
+
+  it "is not valid without a product id" do
+    order = Order.new(quantity: 10, order_type: "purchase")
+    expect { order.save! }.to raise_error ActiveRecord::RecordInvalid
+  end
+
+  it "is not valid without quantity" do
+    product = Product.new(code: "34rty")
+    order = product.orders.new(order_type: "sale")
+    expect { order.save! }.to raise_error ActiveRecord::RecordInvalid
+  end
+
+  it "shouldn't have another order type value" do
+    product = Product.new(code: "34rty")
+    expect { product.orders.new(quantity: 10, order_type: "something") }.to raise_error ArgumentError
+  end
+
+  it "should have an order type value: 'purchase' or 'sale'" do
+    product = Product.new(code: "34rty")
+    order = product.orders.new(quantity: 10)
+    expect { order.save! }.to raise_error ActiveRecord::RecordInvalid
+  end
 end
